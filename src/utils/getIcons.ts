@@ -13,6 +13,7 @@ const conditionKeywords: Record<string, string> = {
     sunny: clear,
     cloud: clouds,
     overcast: clouds,
+    mist: mist,
     fog: mist,
     drizzle: rain,
     rain: rain,
