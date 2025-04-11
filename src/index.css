@@ -2,6 +2,7 @@
 @import "tailwindcss";
 
 @theme {
+  --breakpoint-app: 400px;
   --font-app: "Montserrat", sans-serif;
 }
 
