@@ -5,7 +5,7 @@ import { WeatherCardHour } from "./components/WeatherCardHour";
 import { useEffect, useState } from "react";
 import WeatherCard from "./components/WeatherCard";
 import { getWeatherIcon } from "./utils/getIcons";
-import { WeatherAPIResponseProps, ForecastHourProps } from "./types/WeatherAPIResponse";
+import { WeatherAPIResponseProps, ForecastHourProps } from "./types/types";
 
 const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
@@ -52,7 +52,7 @@ function App() {
    return (
       <>
          <main className="absolute top-1/2 left-1/2 -translate-1/2 container max-w-[400px] bg-gradient-to-b from-[#352163] to-[#33143C] rounded-md sm:rounded-xl ">
-            <div className="relative z-20 p-6 pb-2">
+            <div className="relative z-20 p-6 pb-4">
                <div className="relative z-1 flex gap-2 w-full">
                   <input
                      className="w-full pl-10 pr-4 py-2 bg-white/20 text-white rounded-md border border-gray-200/30"
@@ -70,7 +70,7 @@ function App() {
                </div>
             </div>
             <div>
-               <div className="relative z-20 flex justify-center items-center border-b border-white/20 h-70">
+               <div className="relative z-20 flex justify-center items-center border-b border-white/20 h-70 pb-4">
                   {loading && <LoaderCircle size={80} color="white" className="absolute bottom-50 animate-spin" />}
                   {weather !== null && (
                      <WeatherCard
@@ -94,12 +94,12 @@ function App() {
                   className="absolute z-0 inset-0 bg-cover bg-center blur-xs"
                   style={{ backgroundImage: `url(${Clouds})` }}
                />
-               <div className="relative z-20 flex items-center justify-center gap-2 app:gap-5.5 py-6 h-[140px]">
+               <div className="relative z-20 flex items-center justify-center gap-2 app:gap-3 h-[140px]">
                   {nextHoursWeathers &&
                      nextHoursWeathers.map((hour, index) => (
                         <WeatherCardHour
                            key={index}
-                           weatherImg={getWeatherIcon(hour.condition.text || "none")}
+                           weatherImg={hour.condition.icon}
                            weatherHour={hour.time.slice(-5)}
                            temperature={hour.temp_c}
                         />
