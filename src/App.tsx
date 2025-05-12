@@ -34,6 +34,10 @@ function App() {
          const data = await response.json();
          const forecastHours = data.forecast.forecastday[0].hour.slice(currentHour + 1, currentHour + 6);
 
+         // have to fix forecast hours when current hour is 20:00, the array ends
+         console.log(data.forecast.forecastday[0].hour);
+
+         console.log(data);
          setNotFound(false);
          setNextHoursWeathers(forecastHours);
          setWeather(data);
@@ -63,8 +67,7 @@ function App() {
                   <Search size={22} className="absolute top-2.5 left-2 text-white" />
                   <button
                      onClick={() => fetchWeather(query)}
-                     className="bg-white/20 px-2.5 border border-white/20 rounded-md cursor-pointer"
-                  >
+                     className="bg-white/20 px-2.5 border border-white/20 rounded-md cursor-pointer">
                      <Crosshair size={22} color="white" />
                   </button>
                </div>
